@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>X4 Online</title>
+  <meta name="description" content="X4 Online: multiplayer for X4: Foundations. One shared universe, your own empire, play together.">
+  <meta name="theme-color" content="#05090f">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://130.61.223.91:47800 https://api.github.com http://127.0.0.1:*; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="nebula" aria-hidden="true"><i></i><i></i><i></i></div>
+  <header id="top">
+    <a class="brand" href="#home" data-link>
+      <svg class="logo" viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M20 2 36 11v18L20 38 4 29V11z" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M20 9 30 15v10l-10 6-10-6V15z" fill="currentColor" opacity=".18"/>
+        <path d="M13 14l14 12M27 14 13 26" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+      <span class="wordmark">X4 <b>ONLINE</b></span>
+    </a>
+    <nav id="nav" aria-label="Main">
+      <a href="#home" data-link><span data-edit="nav.home">Home</span></a>
+      <a href="#faq" data-link><span data-edit="nav.faq">FAQ</span></a>
+      <a href="#servers" data-link><span data-edit="nav.servers">Servers</span><span class="pulse" aria-hidden="true"></span></a>
+      <a href="#download" data-link><span data-edit="nav.download">Download</span></a>
+      <a href="#account" data-link id="nav-account"><span id="nav-account-label" data-edit="nav.account">Account</span></a>
+      <span class="ink" aria-hidden="true"></span>
+    </nav>
+    <div class="top-right">
+      <span id="status-chip" class="chip" title="The X4 Online server"><i></i><span>Connecting…</span></span>
+      <a id="cta-top" class="btn btn-small" href="#account" data-link><span id="cta-label" data-edit="nav.signin">Sign in</span></a>
+      <button id="burger" class="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <aside id="drawer" aria-hidden="true">
+    <a href="#home" data-link><b>01</b><span data-edit="nav.home">Home</span></a>
+    <a href="#faq" data-link><b>02</b><span data-edit="nav.faq">FAQ</span></a>
+    <a href="#servers" data-link><b>03</b><span data-edit="nav.servers">Servers</span></a>
+    <a href="#download" data-link><b>04</b><span data-edit="nav.download">Download</span></a>
+    <a href="#account" data-link><b>05</b><span data-edit="nav.account">Account</span></a>
+  </aside>
+  <main id="view">
+    <section class="page" data-page="home">
+      <div class="hero">
+        <p class="eyebrow reveal" data-edit="home.eyebrow">Multiplayer for X4: Foundations</p>
+        <h1 class="reveal"><span class="glitch" data-text="ONE UNIVERSE" data-edit="home.title1">ONE UNIVERSE</span><br><span class="grad" data-edit="home.title2">EVERY PLAYER</span></h1>
+        <p class="lede reveal" data-edit="home.lede">Fly, trade, fight and build in the same galaxy as your friends on public or private servers. Every player runs their own empire, every action reaches the shared universe.</p>
+        <div class="hero-cta reveal">
+          <a id="home-dl-button" class="btn btn-glow" href="https://github.com/LordApocca/X4Online/releases/latest/download/X4Online-win-x64.zip" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 21h16"/></svg><span data-edit="home.cta.download">Download for Windows</span></a>
+          <p class="dl-mobile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/></svg><span data-edit="home.cta.mobile">X4 Online runs on Windows PCs: open this page on your PC to download it.</span></p>
+          <a class="btn btn-ghost" href="#account" data-link data-tab="register"><span data-edit="home.cta.account">Create an account</span></a>
+        </div>
+        <div class="stats reveal" id="stats">
+          <div class="stat"><b data-count="online">–</b><span data-edit="home.stat.online">Players online</span></div>
+          <div class="stat"><b data-count="sessions">–</b><span data-edit="home.stat.sessions">live sessions</span></div>
+          <div class="stat"><b data-count="accounts">–</b><span data-edit="home.stat.accounts">registered players</span></div>
+          <div class="stat"><b id="stat-version">–</b><span data-edit="home.stat.version">latest version</span><small id="stat-age"></small></div>
+        </div>
+        <button class="scroll-cue" type="button" aria-label="More"><span></span></button>
+      </div>
+      <div class="section" id="roadmap">
+        <h2 class="reveal" data-edit="home.roadmap.title">Roadmap</h2>
+        <p class="road-lede reveal" data-edit="home.roadmap.lede">What we are building next.</p>
+        <div id="road" class="road"></div>
+        <button id="road-edit" class="btn btn-small btn-glow notes-edit edit-ui" type="button" hidden><span>Edit roadmap</span></button>
+      </div>
+      <div class="section" id="features">
+        <h2 class="reveal" data-edit="home.features.title">Seamless online multiplayer is the goal</h2>
+        <div class="cards">
+          <article class="card tilt reveal">
+            <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M5 19l3-3M16 8l3-3"/></svg></div>
+            <h3 data-edit="home.feature1.title">A shared universe</h3>
+            <p data-edit="home.feature1.text">NPC ships, Stations, cargo, diplomatic relations and much more are synced between players. What you do in your corner of space impacts everyone.</p>
+          </article>
+          <article class="card tilt reveal">
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2 21 7v10l-9 5-9-5V7z"/><path d="M12 12 21 7M12 12v10M12 12 3 7"/></svg></div>
+            <h3 data-edit="home.feature2.title">Your own empire</h3>
+            <p data-edit="home.feature2.text">Each player controls their own faction. Money, research, licences, exploration and owned assets are all kept separate, even allowing for player faction diplomacy.</p>
+          </article>
+          <article class="card tilt reveal">
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
+            <h3 data-edit="home.feature3.title">Smooth sync</h3>
+            <p data-edit="home.feature3.text">Every sector runs on the game of the local player inside it, at full attention. Other players' ships fly smoothly, fire every shot and dock where they really are.</p>
+          </article>
+          <article class="card tilt reveal">
+            <div class="ico"><svg viewBox="0 0 24 24"><circle cx="8" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 21c0-3.5 2.7-6 6-6s6 2.5 6 6M14 21c0-2.5 1.5-4.5 3-4.5s4 1.5 4 4.5"/></svg></div>
+            <h3 data-edit="home.feature4.title">Walk together</h3>
+            <p data-edit="home.feature4.text">Meet on stations and aboard each other's ships, in the character look you picked. Dock at another player's ship and walk it's decks together.</p>
+          </article>
+          <article class="card tilt reveal">
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="9"/></svg></div>
+            <h3 data-edit="home.feature5.title">Ease of use</h3>
+            <p data-edit="home.feature5.text">The X4 Online app handles installing the latest version of the mod and keeps itself updated, with server lists and automatic game booting.</p>
+          </article>
+          <article class="card tilt reveal">
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <h3 data-edit="home.feature6.title">Nothing lost</h3>
+            <p data-edit="home.feature6.text">The host keeps every player's progress. Leave and come back later with no progress lost thanks to the app handling save merges.</p>
+          </article>
+        </div>
+      </div>
+      <div class="section steps-wrap">
+        <h2 class="reveal" data-edit="home.steps.title">Three step process</h2>
+        <ol class="steps">
+          <li class="reveal"><b>1</b><h3 data-edit="home.step1.title">Get the app</h3><p data-edit="home.step1.text">Download X4 Online. It installs the mod into your copy of X4 and keeps both up to date automatically.</p></li>
+          <li class="reveal"><b>2</b><h3 data-edit="home.step2.title">Create your account</h3><p data-edit="home.step2.text">Make an account here or in the app, then optionally customize your faction before joining a session.</p></li>
+          <li class="reveal"><b>3</b><h3 data-edit="home.step3.title">Host or join</h3><p data-edit="home.step3.text">Host your own save or join a friend's session from the server list. The app will handle the rest.</p></li>
+        </ol>
+      </div>
+    </section>
+    <section class="page" data-page="faq">
+      <div class="section narrow">
+        <p class="eyebrow reveal" data-edit="faq.eyebrow">Before you launch</p>
+        <h1 class="page-title reveal" data-edit="faq.title">Questions &amp; answers</h1>
+        <p class="lede small reveal" data-edit="faq.lede">What X4 Online can do, what plays differently from single player, and what you need to get started.</p>
+        <div class="faq-tools reveal">
+          <label class="faq-search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            <input id="faq-q" type="search" placeholder="Search the questions" aria-label="Search the questions" autocomplete="off">
+          </label>
+          <div class="faq-chips" role="group" aria-label="Show a group">
+            <button type="button" class="chip-btn on" data-group="all"><span data-edit="faq.chip.all">All</span></button>
+            <button type="button" class="chip-btn" data-group="works"><span data-edit="faq.chip.works">What works</span></button>
+            <button type="button" class="chip-btn" data-group="diff"><span data-edit="faq.chip.diff">Different</span></button>
+            <button type="button" class="chip-btn" data-group="needs"><span data-edit="faq.chip.needs">Requirements</span></button>
+            <button type="button" class="chip-btn" data-group="know"><span data-edit="faq.chip.know">Good to know</span></button>
+          </div>
+        </div>
+        <div class="faq-group reveal" data-group="works">
+          <h2><i></i><span data-edit="faq.g.works">What works</span></h2>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.works1.q">What is X4 Online?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.works1.a">A free, fan-made mod that lets you play X4: Foundations together with friends in the same universe. Each of you runs your own empire.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.works2.q">How many players can play together?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.works2.a">Up to 3 per session today: the host plus two friends. More are planned, with 8 players as the goal.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.works3.q">Do we really share one universe?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.works3.a">Yes. NPC ships, stations, the economy, wars and relations, wrecks and more stay the same for everyone. What you do in your corner of space affects the others.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.works4.q">Do I get my own faction?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.works4.a">Yes. You have your own money, ships, stations, research, licences, exploration and diplomacy, with your own faction name and character look, set in the app.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.works5.q">Can we trade with each other?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.works5.a">Yes. Your ships can sell to another player's stations, and the wares and the money arrive on both sides.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.works6.q">Can we fly and fight together?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.works6.a">Yes. You see each other's ships fly smoothly and every shot they fire, and you can take on NPCs side by side.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.works7.q">Can we meet on foot?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.works7.a">Yes. Meet on stations and aboard each other's ships, and dock at another player's ship to walk its decks together.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.works8.q">Can I join a game that's already running?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.works8.a">Yes, when the host allows joining during play. Everyone pauses for a few seconds while you load in.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.works9.q">What happens to my progress when I leave?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.works9.a">The host's save keeps it. Join again later and carry on where you left off.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.works10.q">Do I have to install the mod myself?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.works10.a">No. The app installs the mod, keeps it and itself up to date, and starts X4 for you.</p></div></div></div>
+        </div>
+        <div class="faq-group reveal" data-group="diff">
+          <h2><i></i><span data-edit="faq.g.diff">Different from single player</span></h2>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.diff1.q">Why can't I use time acceleration (SETA)?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.diff1.a">It's turned off, because one player can't speed up a universe that everyone shares.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.diff2.q">Why does my game pause when someone else pauses?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.diff2.a">Pausing is shared. When anyone pauses, everyone pauses, and everyone resumes together, so all games stay in step.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.diff3.q">Why can't I save?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.diff3.a">Only the host saves. The universe, with everyone's progress in it, lives in the host's save.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.diff4.q">What happens when the host quits?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.diff4.a">The session ends for everyone. Nothing is lost: it's all in the host's save, ready for next time.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.diff5.q">Can I play the story?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.diff5.a">Story and plot missions are for the host only. Other players start in sandbox mode, can take all generated missions, and pick their starting system in the app, where their own HQ is placed for research.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.diff6.q">Can I build a headquarters or terraform?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.diff6.a">Only the host, for now.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.diff7.q">Can I board or claim another player's ship?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.diff7.a">No. Other players' ships and stations are safe from boarding and claiming. Docking at them is fine.</p></div></div></div>
+        </div>
+        <div class="faq-group reveal" data-group="needs">
+          <h2><i></i><span data-edit="faq.g.needs">Requirements and limits</span></h2>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.needs1.q">What do I need? Does it work with GOG or Epic?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.needs1.a">The Steam version of X4: Foundations 9.00 on Windows, the same DLCs as the host, the X4 Online app and a free account. Only the Steam version is supported: copies from GOG or the Epic Games Store won't work with X4 Online.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.needs2.q">Why do I need a separate app?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.needs2.a">X4 doesn't let mods connect to the internet, so the app does that part: it links your game with the other players and the X4 Online server.</p><p data-edit="faq.needs2.b">It also handles the save data that multiplayer needs, which X4 can't do by itself. An X4 save holds only one player, but a shared universe has several, each with their own progress. The app keeps every player's own map, encyclopedia, blueprints, inventory and stats alongside the host's save. When you join, it merges your progress into the host's universe before your game loads it, and when you leave, it takes your progress back out. It moves that save between the players' PCs and removes your copy once it's loaded, so everyone always plays the one shared universe.</p><p data-edit="faq.needs2.c">The app also installs and updates the mod, handles your account and the server list, and starts X4 through Steam. It runs only on your PC while you play, and touches nothing besides its own files, the mod in X4's folder, the saves it handles for you, and X4 settings you agree to change.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.account.q">Why do I need an account?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.account.a">Your account is how a shared universe knows which empire is yours. When you join, the host's game recognises your account and puts you back in your own faction, with your ships, stations and money, from whichever PC you play on, and nobody else can take your place.</p><p data-edit="faq.account.b">It also keeps your faction's name, description, look and starting system, and gives you the server list, private sessions and chat. It's free, and all it asks for is an account name and a password: no email address.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.needs3.q">Does it work on Linux, Mac or Steam Deck?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.needs3.a">Not yet. X4 Online runs on Windows only.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.needs4.q">Can I use other mods?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.needs4.a">X4 Online is made to run without them. If you do use them, everyone in the session needs exactly the same mods, and they may cause problems.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.needs5.q">What is Protected UI Mode, and why must it be off?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.needs5.a">It's an X4 setting that stops the mod from connecting to the game. The app asks before you host or join, and can turn it off for you.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.needs6.q">X4 just updated and X4 Online stopped working. What now?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.needs6.a">X4 Online is made for X4 9.00. After an X4 update, wait for an X4 Online update; the app installs it by itself.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.needs7.q">Do I need to open a port to host?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.needs7.a">The app tries to open it on your router by itself. If that doesn't work, it shows you how to forward TCP port 47801.</p></div></div></div>
+        </div>
+        <div class="faq-group reveal" data-group="know">
+          <h2><i></i><span data-edit="faq.g.know">Good to know</span></h2>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.know1.q">Is it safe to host my main save?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.know1.a">X4 Online is still in early development, so keep a copy of any save you host.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.know2.q">Is there anti-cheat?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.know2.a">No. X4 Online is made for playing together with friends, so there's no anti-cheat. For a private session, give it a password and share it with the people you invite.</p></div></div></div>
+          <div class="faq-item"><button type="button" class="faq-q" aria-expanded="false"><span data-edit="faq.know3.q">Is this made by Egosoft?</span><b></b></button><div class="faq-a"><div><p data-edit="faq.know3.a">No. X4 Online is an unofficial fan project, not affiliated with Egosoft.</p></div></div></div>
+        </div>
+        <p id="faq-none" class="faq-none muted" hidden data-edit="faq.none">No question matches. Try another word.</p>
+      </div>
+    </section>
+    <section class="page" data-page="servers">
+      <div class="section narrow">
+        <p class="eyebrow" data-edit="servers.eyebrow">Live from the X4 Online server</p>
+        <h1 class="page-title" data-edit="servers.title">Servers</h1>
+        <p class="lede small" data-edit="servers.lede">Sessions hosted right now. Join one from the app's Servers tab.</p>
+        <div class="toolbar">
+          <span id="srv-summary" class="muted">Loading…</span>
+          <button id="srv-refresh" class="btn btn-small btn-ghost" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg><span data-edit="servers.refresh">Refresh</span></button>
+        </div>
+        <div id="srv-list" class="srv-list" aria-live="polite"></div>
+      </div>
+    </section>
+    <section class="page" data-page="download">
+      <div class="section narrow">
+        <p class="eyebrow" data-edit="download.eyebrow">X4: Foundations 9.00</p>
+        <h1 class="page-title" data-edit="download.title">Download</h1>
+        <div class="lock-note glass" role="status" data-heading="h2" hidden></div>
+        <div class="dl-card glass">
+          <div class="dl-main">
+            <div>
+              <h2 id="dl-version">X4 Online</h2>
+              <p id="dl-meta" class="muted" data-edit="download.looking">Looking up the latest release…</p>
+            </div>
+            <a id="dl-button" class="btn btn-glow" href="https://github.com/LordApocca/X4Online/releases/latest/download/X4Online-win-x64.zip" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 21h16"/></svg><span data-edit="download.button">Download for Windows</span></a>
+            <p class="dl-mobile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/></svg><span data-edit="download.mobile">X4 Online runs on Windows PCs: open this page on your PC to download it.</span></p>
+          </div>
+          <ol class="install">
+            <li><b data-edit="download.step1.lead">Unzip</b> <span data-edit="download.step1.text">the download anywhere and start</span> <code>X4Online.exe</code>.</li>
+            <li><b data-edit="download.step2.lead">Sign in</b> <span data-edit="download.step2.text">with your account. The app finds X4 and installs the mod by itself.</span></li>
+            <li><b data-edit="download.step3.lead">Host or join</b> <span data-edit="download.step3.text">a session. The app starts X4 and loads the chosen save.</span></li>
+          </ol>
+        </div>
+        <h2 class="sub" data-edit="download.notes.title">Patch notes</h2>
+        <div id="notes" class="notes"></div>
+        <button id="notes-edit" class="btn btn-small btn-glow notes-edit edit-ui" type="button" hidden><span>Edit patch notes</span></button>
+      </div>
+    </section>
+    <section class="page" data-page="account">
+      <div class="section narrow">
+        <div id="auth" class="auth glass">
+          <div class="tabs" role="tablist">
+            <button class="tab" role="tab" data-tab="login" aria-selected="true"><span data-edit="account.tab.login">Sign in</span></button>
+            <button class="tab" role="tab" data-tab="register" aria-selected="false"><span data-edit="account.tab.register">Create account</span></button>
+            <span class="tab-ink" aria-hidden="true"></span>
+          </div>
+          <div class="panes">
+            <form id="f-login" class="pane" data-pane="login" novalidate>
+              <h2 data-edit="account.login.title">Welcome back, pilot</h2>
+              <label class="field"><input name="name" autocomplete="username" required maxlength="20" placeholder=" "><span data-edit="account.field.name">Account name</span></label>
+              <label class="field"><input name="password" type="password" autocomplete="current-password" required maxlength="128" placeholder=" "><span data-edit="account.field.password">Password</span><button type="button" class="eye" aria-label="Show password"></button></label>
+              <label class="check"><input type="checkbox" name="remember" checked><i></i><span data-edit="account.remember">Keep me signed in on this browser</span></label>
+              <p class="form-error" role="alert"></p>
+              <button class="btn btn-glow btn-wide" type="submit"><span data-edit="account.login.submit">Sign in</span></button>
+            </form>
+            <form id="f-register" class="pane" data-pane="register" novalidate>
+              <h2 data-edit="account.register.title">Create your pilot</h2>
+              <div class="lock-note small" role="status" data-heading="h3" hidden></div>
+              <label class="field"><input name="name" autocomplete="username" required minlength="3" maxlength="20" pattern="[A-Za-z0-9_\-]{3,20}" placeholder=" "><span data-edit="account.field.name">Account name</span></label>
+              <p class="hint" data-edit="account.register.hint">3 to 20 letters, digits, - and _. It's your name in the lobby and chat.</p>
+              <label class="field"><input name="password" type="password" autocomplete="new-password" required minlength="8" maxlength="128" placeholder=" "><span data-edit="account.field.password">Password</span><button type="button" class="eye" aria-label="Show password"></button></label>
+              <div class="meter" aria-hidden="true"><i></i></div>
+              <label class="field"><input name="confirm" type="password" autocomplete="new-password" required placeholder=" "><span data-edit="account.field.confirm">Password again</span></label>
+              <label class="check"><input type="checkbox" name="remember" checked><i></i><span data-edit="account.remember">Keep me signed in on this browser</span></label>
+              <p class="form-error" role="alert"></p>
+              <button class="btn btn-glow btn-wide" type="submit"><span data-edit="account.register.submit">Create account</span></button>
+            </form>
+          </div>
+        </div>
+        <div id="me" class="me" hidden>
+          <div class="profile glass">
+            <div class="avatar" id="me-avatar" aria-hidden="true"></div>
+            <div class="who">
+              <p class="eyebrow" data-edit="account.me.eyebrow">Pilot</p>
+              <h1 id="me-name">–</h1>
+              <p id="me-faction" class="faction">–</p>
+              <div id="me-badges" class="badges"></div>
+            </div>
+            <button id="sign-out" class="btn btn-small btn-ghost" type="button"><span data-edit="account.signout">Sign out</span></button>
+          </div>
+          <div class="grid2">
+            <div class="glass panel">
+              <h3 data-edit="account.faction.title">Your faction</h3>
+              <dl class="facts">
+                <dt data-edit="account.faction.name">Name</dt><dd id="me-fname">–</dd>
+                <dt data-edit="account.faction.short">Short name</dt><dd id="me-fshort">–</dd>
+                <dt data-edit="account.faction.look">Character look</dt><dd id="me-look">–</dd>
+                <dt data-edit="account.faction.start">Starting system</dt><dd id="me-start">–</dd>
+              </dl>
+              <p id="me-desc" class="desc"></p>
+              <p class="hint" data-edit="account.faction.hint">Change these in the app's Faction tab. They apply to the next universe you join.</p>
+            </div>
+            <div class="glass panel">
+              <h3 data-edit="account.info.title">Account</h3>
+              <dl class="facts">
+                <dt data-edit="account.info.since">Pilot since</dt><dd id="me-created">–</dd>
+                <dt data-edit="account.info.last">Last sign-in</dt><dd id="me-last">–</dd>
+                <dt data-edit="account.info.online">In the app now</dt><dd id="me-online">–</dd>
+                <dt data-edit="account.info.pid">Player ID</dt><dd><code id="me-pid">–</code></dd>
+              </dl>
+            </div>
+          </div>
+          <details class="glass panel fold">
+            <summary><h3 data-edit="account.password.title">Change password</h3><span class="chev" aria-hidden="true"></span></summary>
+            <form id="f-password" novalidate>
+              <label class="field"><input name="old" type="password" autocomplete="current-password" required placeholder=" "><span data-edit="account.field.current">Current password</span></label>
+              <label class="field"><input name="password" type="password" autocomplete="new-password" required minlength="8" maxlength="128" placeholder=" "><span data-edit="account.field.new">New password</span><button type="button" class="eye" aria-label="Show password"></button></label>
+              <div class="meter" aria-hidden="true"><i></i></div>
+              <p class="hint" data-edit="account.password.hint">Every other sign-in, in the app and on the web, stops working. Sign in again there with the new password.</p>
+              <p class="form-error" role="alert"></p>
+              <button class="btn btn-glow" type="submit"><span data-edit="account.password.submit">Change password</span></button>
+            </form>
+          </details>
+        </div>
+      </div>
+    </section>
+    <section id="edit-more" class="section narrow edit-more" hidden>
+      <h2>Texts that show only sometimes</h2>
+      <dl id="edit-more-list"></dl>
+    </section>
+  </main>
+  <footer>
+    <span data-edit="footer.note">X4 Online is a fan-made mod. X4: Foundations is a trademark of Egosoft.</span>
+    <a href="https://github.com/LordApocca/X4Online" rel="noopener"><span data-edit="footer.github">GitHub</span></a>
+  </footer>
+  <button id="edit-fab" class="edit-fab edit-ui" type="button" aria-label="Edit this page's text" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4"/></svg><span>Edit page</span></button>
+  <div id="edit-bar" class="edit-bar edit-ui" role="region" aria-label="Edit mode" hidden>
+    <p><b>Editing:</b> click any text to change it. <span class="edit-keys">Enter saves, Esc cancels. Menu links still open their page: Alt+click one to change its label.</span></p>
+    <button id="edit-done" class="btn btn-small btn-glow" type="button"><span>Done</span></button>
+  </div>
+  <button id="edit-reset" class="edit-reset edit-ui" type="button" title="Remove this change and show the site's own text again" hidden>Reset</button>
+  <dialog id="edit-dialog" class="edit-dialog edit-ui" aria-labelledby="edit-dialog-title">
+    <form id="f-unlock" novalidate>
+      <h2 id="edit-dialog-title">Unlock editing</h2>
+      <p class="hint">Enter your password to change this site's text. Editing locks again after 15 minutes without a change.</p>
+      <label class="field"><input name="password" type="password" autocomplete="current-password" required maxlength="128" placeholder=" "><span>Password</span></label>
+      <p class="form-error" role="alert"></p>
+      <div class="dialog-actions">
+        <button class="btn btn-small btn-glow" type="submit"><span>Unlock</span></button>
+        <button id="edit-cancel" class="btn btn-small btn-ghost" type="button">Cancel</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog id="notes-dialog" class="edit-dialog notes-dialog edit-ui" aria-labelledby="notes-dialog-title">
+    <form id="f-notes" novalidate>
+      <h2 id="notes-dialog-title">Patch notes</h2>
+      <p id="notes-hint" class="hint"></p>
+      <button id="notes-add" class="btn btn-small btn-ghost" type="button"><span>Add release</span></button>
+      <div id="notes-body" class="ne-body"></div>
+      <p class="form-error" role="alert"></p>
+      <div class="dialog-actions">
+        <button id="notes-save" class="btn btn-small btn-glow" type="submit"><span>Save</span></button>
+        <button id="notes-cancel" class="btn btn-small btn-ghost" type="button">Cancel</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog id="road-dialog" class="edit-dialog notes-dialog edit-ui" aria-labelledby="road-dialog-title">
+    <form id="f-road" novalidate>
+      <h2 id="road-dialog-title">Roadmap</h2>
+      <p id="road-hint" class="hint"></p>
+      <button id="road-add" class="btn btn-small btn-ghost" type="button"><span>Add article</span></button>
+      <div id="road-body" class="ne-body"></div>
+      <p class="form-error" role="alert"></p>
+      <div class="dialog-actions">
+        <button id="road-save" class="btn btn-small btn-glow" type="submit"><span>Save</span></button>
+        <button id="road-cancel" class="btn btn-small btn-ghost" type="button">Cancel</button>
+      </div>
+    </form>
+  </dialog>
+  <div id="toasts" aria-live="polite"></div>
+  <script src="changelog.js"></script>
+  <script src="roadmap.js"></script>
+  <script src="site.js"></script>
+</body>
+</html>
